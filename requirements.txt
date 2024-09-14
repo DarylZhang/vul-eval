@@ -1,0 +1,8 @@
+pip install anthropic
+
+pip install --upgrade openai
+
+pip install python-dotenv
+pip install scikit-learn
+pip install SQLite4
+pip install tqdm
