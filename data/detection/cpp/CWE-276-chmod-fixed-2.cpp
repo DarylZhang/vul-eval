@@ -32,7 +32,7 @@ void anotherDummyFunction() {
 
 int main() {
     std::string filePath = "/tmp/dummyFile.txt";
-    mode_t fileMode = 0644; // 修复：main中设置为644权限
+    mode_t fileMode = 0644;
 
     std::ofstream outfile(filePath);
     outfile << "Dummy content." << std::endl;

@@ -1,0 +1,22 @@
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/event")
+public class CWE_79_event extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userInput = request.getParameter("userInput");
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        out.println("<html><body>");
+        // CWE-79 XSS vulnerability: userInput is injected into an HTML event attribute
+        out.println("<img src='image.jpg' onerror='alert(\"" + userInput + "\")'>");
+        out.println("</body></html>");
+    }
+}
