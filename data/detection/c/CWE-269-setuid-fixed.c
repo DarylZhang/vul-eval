@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <pwd.h>
+#include <string.h>
 
 void dummy_check(int id) {
     if (id % 2 == 0) {

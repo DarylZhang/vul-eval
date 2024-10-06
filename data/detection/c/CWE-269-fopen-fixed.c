@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <string.h>
 
 void dummy_log(const char *message) {
     printf("Log: %s\n", message);

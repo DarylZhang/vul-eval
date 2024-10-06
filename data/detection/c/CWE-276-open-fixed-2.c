@@ -42,7 +42,7 @@ int main() {
     current_user = "admin";
 
     if (check_user_permissions(current_user)) {
-        insecure_open("vulnerable_file.txt");
+        dummy_open("vulnerable_file.txt");
     } else {
         log_action("User does not have sufficient permissions to open file.");
     }

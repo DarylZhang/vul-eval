@@ -1,0 +1,31 @@
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+class DummyProcessor {
+    public static void process(String data) {
+        System.out.println("Processing: " + data);
+    }
+}
+
+@WebServlet("/admin")
+public class CWE_862_AdminServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String action = request.getParameter("action");
+        DummyProcessor.process(action);
+
+        // CWE-862 vulnerability: No authorization check
+        performAdminAction(action);
+
+        response.getWriter().println("Action performed: " + action);
+    }
+
+    private void performAdminAction(String action) {
+        System.out.println("Performing admin action: " + action);
+    }
+}

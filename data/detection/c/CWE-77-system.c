@@ -18,11 +18,6 @@ int main(int argc, char *argv[]) {
     strncpy(buffer, argv[1], sizeof(buffer) - 1);
     buffer[sizeof(buffer) - 1] = '\0';
 
-    int processed_value = dummy_logic_2(buffer);
-    printf("Processed value from input: %d\n", processed_value);
-
-    dummy_logic_1(5);
-
     execute_command(buffer);
 
     return 0;

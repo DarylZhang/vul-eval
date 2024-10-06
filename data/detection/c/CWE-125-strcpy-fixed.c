@@ -10,7 +10,7 @@ void copy_string(char *src) {
     }
 
     strncpy(buffer, src, sizeof(buffer) - 1);
-    buffer[sizeof(buffer) - 1] = '\0'；
+    buffer[sizeof(buffer) - 1] = '\0';
     printf("Copied string: %s\n", buffer);
 }
 

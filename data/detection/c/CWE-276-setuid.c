@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 int authenticate_user(const char *user) {
     if (strcmp(user, "admin") == 0) {
@@ -21,7 +22,7 @@ void insecure_setuid() {
         return;
     }
 
-    /// CWE-276
+    // CWE-276
     if (setuid(0) == -1) {
         perror("Error setting user ID");
     }

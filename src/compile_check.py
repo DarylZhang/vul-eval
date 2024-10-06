@@ -5,21 +5,19 @@ from tqdm import tqdm
 from dotenv import load_dotenv
 from jinja2 import Template
 
-
 def load_env_variables():
     load_dotenv()
     code_files_directory = os.getenv('CODE_FILES_DIRECTORY')
     return code_files_directory
 
-
 def read_code_files(directory):
     code_files = []
+    print(os.getcwd())
     for subdir, _, files in os.walk(directory):
         language = os.path.basename(subdir)  # Get the programming language from the folder name
         for file in files:
             code_files.append((file, os.path.join(subdir, file), language))
     return code_files
-
 
 def get_java_dependencies(directory):
     dependency_dir = os.path.join(directory, 'dependency')
@@ -28,15 +26,14 @@ def get_java_dependencies(directory):
         return ':'.join(dependencies)  # Use colon as classpath separator
     return ''
 
-
 def compile_code(file_path, language):
     try:
         if language == 'c':
             output_file = file_path + '.out'
             subprocess.run(['gcc', file_path, '-o', output_file], check=True, text=True, capture_output=True)
-        elif language == 'c':
+        elif language == 'cpp':
             output_file = file_path + '.out'
-            subprocess.run(['g++', file_path, '-o', output_file], check=True, text=True, capture_output=True)
+            subprocess.run(['g++', file_path, '-o', output_file, '-std=c++11'], check=True, text=True, capture_output=True)
         elif language == 'csharp':
             output_file = os.path.splitext(file_path)[0] + '.exe'
             subprocess.run(['/Library/Frameworks/Mono.framework/Versions/Current/Commands/mcs', file_path], check=True, text=True, capture_output=True)
@@ -57,7 +54,7 @@ def compile_code(file_path, language):
 def clean_up_compiled_files(directory, language):
     for subdir, _, files in os.walk(directory):
         for file in files:
-            if (language == 'c' or language == 'c') and file.endswith('.out'):
+            if (language == 'c' or language == 'cpp') and file.endswith('.out'):
                 os.remove(os.path.join(subdir, file))
             elif language == 'csharp' and file.endswith('.exe'):
                 os.remove(os.path.join(subdir, file))
