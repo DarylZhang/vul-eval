@@ -11,7 +11,6 @@ void dummyProcessing(int *data, int size) {
 void processData(int *inputArray, int size, int **validPtr) {
     dummyProcessing(*validPtr, size);
 
-    // CWE-416 vulnerability avoided: Check if pointer is valid after free
     if (*validPtr != nullptr) {
         int value = (*validPtr)[0];
         std::cout << "Value: " << value << std::endl;

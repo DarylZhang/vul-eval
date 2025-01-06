@@ -5,7 +5,6 @@ def dummy_logic_14(a):
 
 def run_system_command(command):
     dummy_logic_14(50)
-    # CWE-20: Command injection vulnerability due to improper validation
     os.system(command)
 
 def dummy_logic_15():

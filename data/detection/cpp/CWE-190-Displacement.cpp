@@ -16,7 +16,6 @@ void printDummyResult(int res) {
 }
 
 int shiftOf(int number) {
-    // CWE-190: Integer Overflow via left shift
     return number << 1;
 }
 

@@ -20,7 +20,6 @@ int dummyMultiplication(int a, int b) {
 }
 
 int multiply(int a, int b) {
-    // CWE-190: Integer Overflow via multiplication
     return a * b;
 }
 

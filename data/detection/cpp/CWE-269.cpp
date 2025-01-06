@@ -19,7 +19,6 @@ std::string dummyFunction2(const std::string& input) {
 void setFilePermissions(const std::string& filename, mode_t mode) {
     dummyFunction1(5);
 
-    // CWE-276: Incorrect Default Permissions
     chmod(filename.c_str(), mode);
 
     dummyFunction1(3);

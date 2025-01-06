@@ -1,6 +1,6 @@
 import java.util.Random;
 
-class ProcessHandler {
+class CWE_306_DataManager_fixed_2_ProcessHandler {
 
     public static void startProcess(int permissionLevel, String sensitiveData) {
         Random rand = new Random();
@@ -60,7 +60,7 @@ public class CWE_306_DataManager_fixed_2 {
             return;
         }
 
-        ProcessHandler.startProcess(userPermissionLevel, sensitiveInformation);
+        CWE_306_DataManager_fixed_2_ProcessHandler.startProcess(userPermissionLevel, sensitiveInformation);
     }
 
     private static boolean checkPermission(int level) {

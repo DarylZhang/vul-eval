@@ -27,7 +27,6 @@ class AuthSystem
         DummyMethod2(value);
         DummyMethod3(value, password);
 
-        //CWE-287
         if (password == "hardcodedPassword123")
         {
             GrantAccess();

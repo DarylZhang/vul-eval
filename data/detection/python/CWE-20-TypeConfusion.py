@@ -3,7 +3,6 @@ def dummy_logic_12(a, b):
 
 def process_data(data):
     dummy_logic_12(10, 20)
-    # CWE-20: Type confusion, assuming data is always a string
     print(f"Processing data: {data.upper()}")
 
 def dummy_logic_13():

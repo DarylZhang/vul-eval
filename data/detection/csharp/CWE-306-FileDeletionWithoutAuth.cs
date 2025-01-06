@@ -22,7 +22,6 @@ class Program
 
         PerformAdditionalTask();
 
-        //CWE-306
         DeleteFile(path);
     }
 

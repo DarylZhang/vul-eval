@@ -23,7 +23,6 @@ def authenticate_user(token):
     return token == "valid_token"
 
 def perform_action(data):
-    # CWE-352 CSRF vulnerability: No token validation for sensitive operation
     if data == "update_profile":
         update_profile()
     elif data == "delete_account":

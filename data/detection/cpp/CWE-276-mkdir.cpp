@@ -15,7 +15,6 @@ void performTask(const std::string& path) {
 void createDirectoryWithWrongPermissions(const std::string& dirPath) {
     helperDummyLogic(5);
 
-    // CWE-276: Incorrect Default Permissions
     mkdir(dirPath.c_str(), 0777);
 
     helperDummyLogic(3);

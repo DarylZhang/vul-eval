@@ -19,7 +19,6 @@ void complexLogic2() {
 void function2(char* dest, const char* src, int size) {
     complexLogic2();
 
-    // CWE-787: Buffer overflow
     strcpy(dest, src);
 
     complexLogic2();

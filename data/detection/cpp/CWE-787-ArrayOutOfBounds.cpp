@@ -17,7 +17,6 @@ void function1(int* data, int size) {
     dummyProcess1(size, size - 1);
     complexLogic1();
 
-    // CWE-787: Array index out of bounds
     for (int i = 0; i <= size; i++) {
         data[i] = i * 2;
     }

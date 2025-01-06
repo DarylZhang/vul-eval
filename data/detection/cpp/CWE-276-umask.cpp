@@ -16,7 +16,6 @@ void dummyMethodB() {
 void createFileWithWrongPermissions(const std::string& filename) {
     dummyMethodA();
 
-    // CWE-276: Incorrect Default Permissions
     umask(0000);
 
     std::ofstream file(filename);

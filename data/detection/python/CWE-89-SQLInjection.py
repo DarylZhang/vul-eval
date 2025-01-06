@@ -16,7 +16,6 @@ def generate_query(user_id, table_name):
     part_3 = " WHERE user_id = "
     part_4 = str(user_id)
 
-    # CWE-89
     query = part_1 + part_2 + part_3 + part_4
 
     return query

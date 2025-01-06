@@ -38,7 +38,7 @@ void runCommand(const char* input) {
 
 int main() {
     int a = 100, b = 200;
-    const char* allowedInput = "-l";  // Fixed trusted input
+    const char* allowedInput = "-l";
     dummyProcess(a, b, allowedInput);
     complexLogic(allowedInput);
     runCommand(allowedInput);

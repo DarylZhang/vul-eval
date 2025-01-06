@@ -1,6 +1,6 @@
 import java.util.Random;
 
-class ProcessHandler {
+class CWE_306_DataManager_ProcessHandler {
 
     public static void startProcess(int permissionLevel, String sensitiveData) {
         Random rand = new Random();
@@ -11,7 +11,6 @@ class ProcessHandler {
             complexMethod();
         }
 
-        // CWE-86
         accessSensitiveFunction(permissionLevel, sensitiveData);
 
         additionalLogic();
@@ -56,6 +55,6 @@ public class CWE_306_DataManager {
         int userPermissionLevel = 3;
         String sensitiveInformation = "TopSecretData";
 
-        ProcessHandler.startProcess(userPermissionLevel, sensitiveInformation);
+        CWE_306_DataManager_ProcessHandler.startProcess(userPermissionLevel, sensitiveInformation);
     }
 }

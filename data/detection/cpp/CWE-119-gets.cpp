@@ -19,7 +19,6 @@ void analyze_input(char* input) {
 }
 
 void read_input(char* buffer) {
-    // CWE-119: Unsafe use of gets, which can lead to buffer overflow
     gets(buffer);
     analyze_input(buffer);
     complex_calculation(strlen(buffer), 42);

@@ -21,7 +21,6 @@ private:
     void safeCopy(const char* input) {
         char buffer[10];
 
-        // Avoid CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer
         if (strlen(input) < sizeof(buffer)) {
             strcpy(buffer, input);
             std::cout << "Buffer content: " << buffer << std::endl;

@@ -14,7 +14,6 @@ public class CWE_287_UserPortal {
     }
 
     public boolean processLogin(String username, String password) {
-        // CWE-287 Vulnerable method: lacks proper authentication
         if (userDatabase.containsKey(username)) {
             return true;
         }

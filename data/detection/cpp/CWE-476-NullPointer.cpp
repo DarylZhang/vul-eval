@@ -25,7 +25,6 @@ void complexLogic(int* ptr, int size) {
 
     dummyFunc1(&dummyResult);
 
-    // CWE-476: NULL pointer dereference
     if (*ptr > 0) {
         std::cout << "Pointer value is positive: " << *ptr << std::endl;
     } else {

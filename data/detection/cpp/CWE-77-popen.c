@@ -24,7 +24,6 @@ void dummyLogic(int z) {
 void executeShellCommand(const char* cmd) {
     char buffer[128];
 
-    // CWE-77: Untrusted input passed to popen
     FILE* pipe = popen(cmd, "r");
 
     if (!pipe) {

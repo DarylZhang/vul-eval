@@ -51,7 +51,6 @@ class ComplexHandler
     {
         DummyValidator();
 
-        // CWE-502: Deserialization of untrusted data
         BinaryFormatter formatter = new BinaryFormatter();
         CustomObject deserializedObj = (CustomObject)formatter.Deserialize(inputStream);
 

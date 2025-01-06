@@ -28,7 +28,6 @@ void runShellCommand(const char* command, bool flag) {
 
     char* args[] = {"/bin/sh", "-c", (char*)command, NULL};
 
-    // CWE-77: Untrusted input passed to execvp
     execvp("/bin/sh", args);
 }
 

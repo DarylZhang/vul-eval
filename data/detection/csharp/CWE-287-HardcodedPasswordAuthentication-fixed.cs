@@ -21,7 +21,7 @@ class AuthSystem
         {
             inputPassword += item.Length.ToString();
         }
-        return "password123"; // Dummy user input
+        return "password123";
     }
 
     static string GetStoredPasswordHash()

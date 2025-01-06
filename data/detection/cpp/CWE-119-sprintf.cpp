@@ -19,7 +19,6 @@ void handle_message(char* msg) {
 void log_data(int a, const char* data) {
     char log_msg[20];
 
-    // CWE-119: Potential buffer overflow with sprintf
     sprintf(log_msg, "Log: %s", data);
 
     log_message(log_msg);

@@ -3,15 +3,15 @@ public class CWE_862_NoAuthorizationCheckExample_fixed_2 {
         String userRole = "guest";
         String sensitiveResource = "confidentialReport";
 
-        WorkflowEngine workflowEngine = new WorkflowEngine();
+        CWE_862_NoAuthorizationCheckExample_fixed_2_WorkflowEngine workflowEngine = new CWE_862_NoAuthorizationCheckExample_fixed_2_WorkflowEngine();
         workflowEngine.processRequest(userRole, sensitiveResource);
     }
 }
 
-class WorkflowEngine {
+class CWE_862_NoAuthorizationCheckExample_fixed_2_WorkflowEngine {
     public void processRequest(String role, String resource) {
-        AuthorizationHandler authHandler = new AuthorizationHandler();
-        UtilityClass utilityClass = new UtilityClass();
+        CWE_862_NoAuthorizationCheckExample_fixed_2_AuthorizationHandler authHandler = new CWE_862_NoAuthorizationCheckExample_fixed_2_AuthorizationHandler();
+        CWE_862_NoAuthorizationCheckExample_fixed_2_UtilityClass utilityClass = new CWE_862_NoAuthorizationCheckExample_fixed_2_UtilityClass();
 
         if (utilityClass.dummyPreCheck(resource)) {
             if (authHandler.isAuthorized(role, resource)) {
@@ -23,7 +23,7 @@ class WorkflowEngine {
     }
 }
 
-class AuthorizationHandler {
+class CWE_862_NoAuthorizationCheckExample_fixed_2_AuthorizationHandler {
     public boolean isAuthorized(String role, String resource) {
         if ("admin".equals(role)) {
             return true;
@@ -32,14 +32,14 @@ class AuthorizationHandler {
     }
 
     public void handleDataAccess(String resource) {
-        DataProcessor processor = new DataProcessor();
-        AccessLogger logger = new AccessLogger();
+        CWE_862_NoAuthorizationCheckExample_fixed_2_DataProcessor processor = new CWE_862_NoAuthorizationCheckExample_fixed_2_DataProcessor();
+        CWE_862_NoAuthorizationCheckExample_fixed_2_AccessLogger logger = new CWE_862_NoAuthorizationCheckExample_fixed_2_AccessLogger();
         logger.logAccess(resource);
         processor.retrieveSensitiveData(resource);
     }
 }
 
-class DataProcessor {
+class CWE_862_NoAuthorizationCheckExample_fixed_2_DataProcessor {
     public void retrieveSensitiveData(String resource) {
         System.out.println("Accessing sensitive data: " + resource);
         int dummyResult = complexCalculation(resource);
@@ -51,13 +51,13 @@ class DataProcessor {
     }
 }
 
-class AccessLogger {
+class CWE_862_NoAuthorizationCheckExample_fixed_2_AccessLogger {
     public void logAccess(String resource) {
         System.out.println("Log: Access attempt to resource " + resource);
     }
 }
 
-class UtilityClass {
+class CWE_862_NoAuthorizationCheckExample_fixed_2_UtilityClass {
     public boolean dummyPreCheck(String resource) {
         return resource != null && !resource.isEmpty();
     }

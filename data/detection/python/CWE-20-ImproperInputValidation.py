@@ -8,7 +8,6 @@ def perform_calculation(num):
 
 def process_user_input(user_input):
     dummy_processing(user_input)
-    # CWE-20 vulnerability: Improper input validation
     num = int(user_input)
     print(f"You entered: {num}")
     perform_calculation(num)

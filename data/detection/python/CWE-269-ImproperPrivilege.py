@@ -26,7 +26,7 @@ class UserAccountManager:
     def promote_user_role(self, username):
         current_role = self.user_roles.get(username, "user")
         dummy_logic_processor(1, 10)
-        # CWE-269: Granting admin privileges without checking authorization
+
         if current_role == "user":
             self.user_roles[username] = "admin"
 

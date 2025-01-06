@@ -16,7 +16,6 @@ public class CWE_287_UserPortal_fixed {
     }
 
     public boolean processLogin(String username, String password) {
-        // Avoid CWE-287 Vulnerable method: lacks proper authentication
         return authService.validateCredentials(username, password);
     }
 

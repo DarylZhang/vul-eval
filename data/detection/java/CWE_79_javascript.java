@@ -17,7 +17,6 @@ public class CWE_79_javascript extends HttpServlet {
         out.println("<html><body>");
         out.println("<div id='content'></div>");
         out.println("<script>");
-        // CWE-79 XSS vulnerability: userInput is injected into DOM using innerHTML
         out.println("document.getElementById('content').innerHTML = '" + userInput + "';");
         out.println("</script>");
         out.println("</body></html>");

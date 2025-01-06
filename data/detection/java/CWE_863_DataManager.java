@@ -20,7 +20,6 @@ public class CWE_863_DataManager {
     public void performComplexOperation(String username, String operation) {
         UserProfile user = userProfiles.get(username);
         if (user != null) {
-            // CWE-863 Vulnerability: No proper authorization check
             executeOperation(operation);
         } else {
             System.out.println("User not found");

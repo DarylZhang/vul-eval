@@ -27,7 +27,6 @@ class Program
             }
         }
 
-        // CWE-863 vulnerability: Incorrect Authorization Check
         if (role == "admin" || role == "guest")
         {
             AccessRestrictedData(ids);

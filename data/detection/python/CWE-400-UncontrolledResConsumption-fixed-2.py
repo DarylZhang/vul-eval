@@ -2,7 +2,7 @@ import time
 
 def dummy_func_one(x):
     res = 0
-    if x > 10000:  # 修复：限制输入规模
+    if x > 10000:
         x = 10000
     for i in range(x):
         res += i * x - i

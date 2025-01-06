@@ -15,7 +15,6 @@ public class CWE_79_event extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         out.println("<html><body>");
-        // CWE-79 XSS vulnerability: userInput is injected into an HTML event attribute
         out.println("<img src='image.jpg' onerror='alert(\"" + userInput + "\")'>");
         out.println("</body></html>");
     }

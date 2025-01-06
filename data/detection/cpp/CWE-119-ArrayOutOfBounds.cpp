@@ -12,7 +12,6 @@ void risky_function(int index) {
         sum += calculate(i);
     }
 
-    // CWE-119: Array index out of bounds
     std::cout << "Buffer value: " << buffer[index] << std::endl;
 }
 

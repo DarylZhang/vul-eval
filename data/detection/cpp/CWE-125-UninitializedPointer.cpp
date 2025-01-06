@@ -22,7 +22,6 @@ void processData(char* buffer, int dataSize) {
     int result = dummyFunc3(dataSize);
     std::cout << "Dummy result: " << result << std::endl;
 
-    // CWE-125
     std::cout << "First character: " << buffer[0] << std::endl;
 }
 

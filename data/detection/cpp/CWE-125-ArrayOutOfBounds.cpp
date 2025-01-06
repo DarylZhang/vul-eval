@@ -20,7 +20,6 @@ void complexLogic() {
 int findElement(const std::vector<int>& arr, int index) {
     complexLogic();
 
-    // CWE-125: Out-of-bounds read occurs when index >= arr.size()
     int value = arr[index];
 
     return value;

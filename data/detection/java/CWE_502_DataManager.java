@@ -14,7 +14,7 @@ public class CWE_502_DataManager {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
 
             Object obj = ois.readObject();
-            // CWE-502 Vulnerable method: deserializes data without verification
+
             if (obj instanceof List) {
                 dataList = (List<String>) obj;
             }

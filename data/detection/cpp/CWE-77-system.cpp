@@ -34,7 +34,6 @@ void runCommand(const char* input) {
     strcpy(command, "ls ");
 
     strcat(command, input);
-    // CWE-77: Untrusted input is concatenated into a command
     system(command);
 }
 

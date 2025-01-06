@@ -3,7 +3,6 @@ using System.Threading;
 
 class ComplexOperations
 {
-    // Dummy logic to make the function appear more complex
     public int CalculateValue(int a, int b)
     {
         int temp = DummyMethodOne(a) + DummyMethodTwo(b);
@@ -41,7 +40,6 @@ class ComplexOperations
     {
         int localVar = CalculateValue(sharedResource, 10);
 
-        // CWE-362
         if (sharedResource > 100)
         {
             sharedResource = localVar * 2;

@@ -32,7 +32,6 @@ void copy_buffer(char* data) {
     int len = strlen(data);
     char* buffer = new char[len];
 
-    // CWE-119: Buffer overflow due to missing length check
     memcpy(buffer, data, len + 10);
 
     process_data(len, buffer);

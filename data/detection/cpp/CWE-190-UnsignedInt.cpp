@@ -20,7 +20,6 @@ unsigned int dummyModuloOperation(unsigned int x, unsigned int y) {
 }
 
 unsigned int unsignedAddOf(unsigned int largeValue, unsigned int increment) {
-    // CWE-190: Unsigned integer overflow
     return largeValue + increment;
 }
 

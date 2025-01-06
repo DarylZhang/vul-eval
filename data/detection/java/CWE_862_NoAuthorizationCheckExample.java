@@ -3,15 +3,15 @@ public class CWE_862_NoAuthorizationCheckExample {
         String userRole = "guest";
         String sensitiveResource = "confidentialReport";
 
-        WorkflowEngine workflowEngine = new WorkflowEngine();
+        CWE_862_NoAuthorizationCheckExample_WorkflowEngine workflowEngine = new CWE_862_NoAuthorizationCheckExample_WorkflowEngine();
         workflowEngine.processRequest(userRole, sensitiveResource);
     }
 }
 
-class WorkflowEngine {
+class CWE_862_NoAuthorizationCheckExample_WorkflowEngine {
     public void processRequest(String role, String resource) {
-        AuthorizationHandler authHandler = new AuthorizationHandler();
-        UtilityClass utilityClass = new UtilityClass();
+        CWE_862_NoAuthorizationCheckExample_AuthorizationHandler authHandler = new CWE_862_NoAuthorizationCheckExample_AuthorizationHandler();
+        CWE_862_NoAuthorizationCheckExample_UtilityClass utilityClass = new CWE_862_NoAuthorizationCheckExample_UtilityClass();
 
         if (utilityClass.dummyPreCheck(resource)) {
             authHandler.handleDataAccess(resource);
@@ -19,18 +19,17 @@ class WorkflowEngine {
     }
 }
 
-class AuthorizationHandler {
+class CWE_862_NoAuthorizationCheckExample_AuthorizationHandler {
     public void handleDataAccess(String resource) {
-        DataProcessor processor = new DataProcessor();
-        AccessLogger logger = new AccessLogger();
+        CWE_862_NoAuthorizationCheckExample_DataProcessor processor = new CWE_862_NoAuthorizationCheckExample_DataProcessor();
+        CWE_862_NoAuthorizationCheckExample_AccessLogger logger = new CWE_862_NoAuthorizationCheckExample_AccessLogger();
 
         logger.logAccess(resource);
-        // CWE-862
         processor.retrieveSensitiveData(resource);
     }
 }
 
-class DataProcessor {
+class CWE_862_NoAuthorizationCheckExample_DataProcessor {
     public void retrieveSensitiveData(String resource) {
         System.out.println("Accessing sensitive data: " + resource);
 
@@ -44,13 +43,13 @@ class DataProcessor {
     }
 }
 
-class AccessLogger {
+class CWE_862_NoAuthorizationCheckExample_AccessLogger {
     public void logAccess(String resource) {
         System.out.println("Log: Access attempt to resource " + resource);
     }
 }
 
-class UtilityClass {
+class CWE_862_NoAuthorizationCheckExample_UtilityClass {
     public boolean dummyPreCheck(String resource) {
         return resource != null && !resource.isEmpty();
     }

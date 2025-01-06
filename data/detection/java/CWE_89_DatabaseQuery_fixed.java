@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-class DummyProcessor {
+class CWE_89_DatabaseQuery_fixed_DummyProcessor {
     public static void process(String data) {
         System.out.println("Processing: " + data);
     }
@@ -13,13 +13,12 @@ class DummyProcessor {
 public class CWE_89_DatabaseQuery_fixed {
     public static void main(String[] args) {
         String userInput = args[0];
-        DummyProcessor.process(userInput);
+        CWE_89_DatabaseQuery_fixed_DummyProcessor.process(userInput);
 
         if (isValidInput(userInput)) {
             try {
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "password");
 
-                // Avoid CWE-89 by using prepared statements
                 String query = "SELECT * FROM users WHERE username = ?";
                 PreparedStatement pstmt = conn.prepareStatement(query);
                 pstmt.setString(1, userInput);

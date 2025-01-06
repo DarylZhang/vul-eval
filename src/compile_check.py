@@ -31,19 +31,19 @@ def compile_code(file_path, language):
         if language == 'c':
             output_file = file_path + '.out'
             subprocess.run(['gcc', file_path, '-o', output_file], check=True, text=True, capture_output=True)
-        elif language == 'cpp':
-            output_file = file_path + '.out'
-            subprocess.run(['g++', file_path, '-o', output_file, '-std=c++11'], check=True, text=True, capture_output=True)
-        elif language == 'csharp':
-            output_file = os.path.splitext(file_path)[0] + '.exe'
-            subprocess.run(['/Library/Frameworks/Mono.framework/Versions/Current/Commands/mcs', file_path], check=True, text=True, capture_output=True)
-        elif language == 'java':
-            output_file = os.path.splitext(file_path)[0] + '.class'
-            java_classpath = get_java_dependencies(os.path.dirname(file_path))
-            if java_classpath:
-                subprocess.run(['javac', '-cp', java_classpath, file_path], check=True, text=True, capture_output=True)
-            else:
-                subprocess.run(['javac', file_path], check=True, text=True, capture_output=True)
+        # elif language == 'cpp':
+        #     output_file = file_path + '.out'
+        #     subprocess.run(['g++', file_path, '-o', output_file, '-std=c++11'], check=True, text=True, capture_output=True)
+        # elif language == 'csharp':
+        #     output_file = os.path.splitext(file_path)[0] + '.exe'
+        #     subprocess.run(['/Library/Frameworks/Mono.framework/Versions/Current/Commands/mcs', file_path], check=True, text=True, capture_output=True)
+        # elif language == 'java':
+        #     output_file = os.path.splitext(file_path)[0] + '.class'
+        #     java_classpath = get_java_dependencies(os.path.dirname(file_path))
+        #     if java_classpath:
+        #         subprocess.run(['javac', '-cp', java_classpath, file_path], check=True, text=True, capture_output=True)
+        #     else:
+        #         subprocess.run(['javac', file_path], check=True, text=True, capture_output=True)
         else:
             return 'Not a compilable language'
         return 'Success'

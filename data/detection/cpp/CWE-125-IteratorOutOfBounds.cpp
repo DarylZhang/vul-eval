@@ -14,7 +14,6 @@ void dummyIteratorLogic(const std::vector<int>& values) {
 void processVector(const std::vector<int>& vec) {
     dummyIteratorLogic(vec);
 
-    // CWE-125: Out-of-bounds read when accessing beyond vec.end()
     int outOfBoundsValue = *(vec.end());
     std::cout << "Out of bounds value: " << outOfBoundsValue << std::endl;
 }

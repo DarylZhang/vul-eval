@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-class DummyProcessor {
+class CWE_862_AdminServlet_fixed_2_DummyProcessor {
     public static void process(String data) {
         System.out.println("Processing: " + data);
     }
@@ -17,9 +17,7 @@ public class CWE_862_AdminServlet_fixed_2 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        DummyProcessor.process(action);
-
-
+        CWE_862_AdminServlet_fixed_2_DummyProcessor.process(action);
 
         if (!checkAuthorization(session)) {
             response.getWriter().println("Unauthorized access.");

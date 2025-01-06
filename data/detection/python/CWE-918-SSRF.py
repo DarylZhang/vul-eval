@@ -26,7 +26,6 @@ def internal_request_handler(url):
     if not dummy_check:
         dummy_value_2 = dummy_logic_2(url)
         return "Invalid URL"
-    # CWE-918: Server-Side Request Forgery (SSRF)
     response = requests.get(url)
     return response.content
 

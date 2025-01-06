@@ -18,7 +18,6 @@ public class CWE_79_html extends HttpServlet {
 
         out.println("<html><body>");
         out.println("<h1>User Input</h1>");
-        // CWE-79 XSS vulnerability: userInput is not sanitized
         out.println("<p>" + userInput + "</p>");
         out.println("</body></html>");
     }

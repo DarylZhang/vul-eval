@@ -14,7 +14,6 @@ void dummyComplexOperation(const char* str) {
 void copyString(char* dest, const char* src, size_t destSize) {
     dummyComplexOperation(src);
 
-    // CWE-125: Possible out-of-bounds read when src is longer than destSize
     strncpy(dest, src, destSize);
     dest[destSize - 1] = '\0';
 

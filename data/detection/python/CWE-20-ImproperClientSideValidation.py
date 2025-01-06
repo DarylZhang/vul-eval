@@ -4,7 +4,6 @@ def dummy_logic_1():
 def process_form_data(form_data):
     dummy_logic_1()
     dummy_logic_3(form_data)
-    # CWE-20: Trusting client-side validation, assuming input is clean
     username = form_data["username"]
 
     return f"Welcome {username}!"

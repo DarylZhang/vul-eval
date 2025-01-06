@@ -47,7 +47,6 @@ def dummy_logic_4(p, q):
 def actual_vulnerable_function(user_input_file):
     base_directory = "/app/data/"
 
-    # CWE-22 vulnerability: Unsanitized user input used in file path
     full_path = os.path.join(base_directory, user_input_file)
 
     if os.path.exists(full_path):

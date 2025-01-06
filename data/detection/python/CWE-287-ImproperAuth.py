@@ -14,7 +14,6 @@ def dummy_func2(y):
 
 
 def authenticate_user(password, stored_password):
-    # CWE-287
     if password == stored_password:
         return True
     return False

@@ -15,7 +15,7 @@ public:
         processor.process(input);
 
         char buffer[10];
-        // CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer
+
         strcpy(buffer, input);
 
         std::cout << "Buffer content: " << buffer << std::endl;

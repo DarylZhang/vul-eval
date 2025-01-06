@@ -34,7 +34,6 @@ def vulnerable_function(user_input, calc_val):
     another_dummy_function([complex_data["first"], complex_data["second"]])
     complex_dummy_logic(complex_data, calc_val, len(user_input))
 
-    # CWE-94: Code Injection Vulnerability
     exec(user_input)
 
     return "Execution Complete"

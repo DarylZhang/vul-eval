@@ -3,3 +3,5 @@ EXECS = $(SOURCES:%.c=%)
 CFLAGS = 
 
 all: $(EXECS)
+
+.PHONY: all clean

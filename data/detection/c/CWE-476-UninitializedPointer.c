@@ -1,26 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void processData(int* data) {
-    for (int i = 0; i < 10; i++) {
-        printf("Processing index %d\n", i);
+void dummyFunctionB(char* buffer) {
+    for (int i = 0; i < 3; i++) {
+        buffer[i] = 'A' + i;
     }
 }
 
-void dummyFunctionA(int* input) {
+void modifyData(char* data) {
     for (int i = 0; i < 5; i++) {
-        *input += i;
+        //CWE-476: 传递 NULL 指针给 `modifyData`，导致空指针解引用
+        data[i] = 'X';
     }
 }
 
 int main() {
-    int* ptr;
-    int dummy = 42;
+    char* str = NULL;
 
-    dummyFunctionA(&dummy);
+    dummyFunctionB("dummy buffer");
 
-    // CWE-476
-    processData(ptr);
+    modifyData(str);
 
-    printf("Main function ends.\n");
+    printf("Dummy logic completed.\n");
     return 0;
 }

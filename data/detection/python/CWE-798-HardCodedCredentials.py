@@ -24,7 +24,6 @@ class CredentialsManager:
         return result
 
     def connect_to_service(self, service_url):
-        # CWE-798: Hardcoded credentials
         password = "SuperSecretPassword123"
         connection_string = f"{service_url}?user={self.user_name}&password={password}"
         if len(service_url) > 10:

@@ -20,7 +20,6 @@ def dummy_processor(input_value, offset):
 
 
 def deserialize_object(serialized_data):
-    # CWE-502: Deserialization of untrusted data
     obj = pickle.loads(serialized_data)
     process_obj(obj)
 

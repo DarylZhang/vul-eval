@@ -17,7 +17,6 @@ bool validateExecutionCondition(int flag) {
 }
 
 void invokeCommand(const char* command) {
-    // CWE-77: Untrusted input passed to execlp
     execlp("/bin/sh", "sh", "-c", command, NULL);
 }
 

@@ -25,7 +25,6 @@ class AuthorizationService
         HelperClass helper = new HelperClass();
         helper.PerformDummyOperations();
 
-        // CWE-862 Missing Authorization
         if (opCode == 12345)
         {
             PerformPrivilegedOperation(account);

@@ -14,7 +14,6 @@ void processData(int *inputArray, int size) {
 
     delete[] tempArray;
 
-    // CWE-416 vulnerability: Use after free
     int value = tempArray[0];
 
     std::cout << "Value: " << value << std::endl;

@@ -15,7 +15,7 @@ public class CWE_502_DataManager_fixed {
     public void processInputData(String filename) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             Object obj = ois.readObject();
-            // Avoid CWE-502 Vulnerable method: deserializes data without verification
+
             processDeserializedData(obj);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

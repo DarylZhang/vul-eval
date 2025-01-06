@@ -14,7 +14,6 @@ class SystemSettings
 
     static void UpdateSettings(string user, int brightness)
     {
-        //CWE-306
         SetBrightness(brightness);
 
         ExecuteOtherTasks();

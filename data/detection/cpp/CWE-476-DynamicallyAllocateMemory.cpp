@@ -22,7 +22,6 @@ void riskyMemoryUsage(int* data, int size) {
 
     processArray(data, size);
 
-    // CWE-476: Dereferencing a possibly NULL pointer
     if (data[0] > 0) {
         std::cout << "Data array first element is positive" << std::endl;
     } else {

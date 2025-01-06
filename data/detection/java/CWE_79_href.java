@@ -18,7 +18,6 @@ public class CWE_79_href extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         out.println("<html><body>");
-        // CWE-79 XSS vulnerability: userInput is used directly in a URL
         out.println("<a href='" + userInput + "'>Click here</a>");
         out.println("</body></html>");
     }

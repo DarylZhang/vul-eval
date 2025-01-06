@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-class DummyProcessor {
+class CWE_352_TransferServlet_fixed_DummyProcessor {
     public static void process(String data) {
         System.out.println("Processing: " + data);
     }
@@ -17,7 +17,7 @@ public class CWE_352_TransferServlet_fixed extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String csrfToken = request.getParameter("csrfToken");
-        DummyProcessor.process(csrfToken);
+        CWE_352_TransferServlet_fixed_DummyProcessor.process(csrfToken);
 
         if (isValidCsrfToken(csrfToken, session)) {
             String amount = request.getParameter("amount");

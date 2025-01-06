@@ -1,7 +1,6 @@
 #include <iostream>
 
 int complexFunction(int a, int b) {
-    // Dummy logic
     int temp = (a * b) + (a - b);
     for (int i = 0; i < 10; ++i) {
         temp += (a + i * b);
@@ -23,7 +22,6 @@ int anotherDummyFunction(int x) {
 }
 
 int add(int x, int y) {
-    // CWE-190: Integer Overflow via addition
     return x + y;
 }
 

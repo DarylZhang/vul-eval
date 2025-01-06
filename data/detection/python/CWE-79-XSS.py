@@ -3,7 +3,6 @@ def dummy_logic_16(data):
 
 def render_web_page(content):
     dummy_logic_16(content)
-    # CWE-20: No sanitization of user input, leading to XSS vulnerability
     html = f"<html><body>{content}</body></html>"
     return html
 

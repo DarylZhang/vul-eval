@@ -18,7 +18,6 @@ def dummy_func_three(data):
 def resource_consuming_task(file_path, data_limit):
     data_store = []
     with open(file_path, 'r') as file:
-        # CWE-400: Uncontrolled resource consumption - reading large unbounded data into memory
         while True:
             data = file.read(data_limit)
             if not data:

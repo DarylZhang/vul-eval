@@ -5,7 +5,6 @@ def dummy_logic_4(a, b):
 
 def save_file(file_path):
     dummy_logic_4(5, 10)
-    # CWE-20: No validation on file type or size before saving
     with open(file_path, "wb") as f:
         f.write(b"Dummy data")
     return "File saved"

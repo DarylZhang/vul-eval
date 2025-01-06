@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class DummyProcessor {
+class CWE_20_DummyProcessor {
     public static void process(String data) {
         String reversed = new StringBuilder(data).reverse().toString();
         System.out.println("Reversed Input: " + reversed);
@@ -13,9 +13,8 @@ public class CWE_20_UserInputHandler {
         System.out.print("Enter an integer: ");
         String userInput = scanner.nextLine();
 
-        DummyProcessor.process(userInput);
+        CWE_20_DummyProcessor.process(userInput);
 
-        // CWE-20 vulnerability: Improper input validation
         int number = Integer.parseInt(userInput);
         System.out.println("You entered: " + number);
 

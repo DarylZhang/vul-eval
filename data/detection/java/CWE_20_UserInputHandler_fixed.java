@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class DummyProcessor {
+class CWE_20_UserInputHandler_fixedDummyProcessor {
     public static void process(String data) {
         String reversed = new StringBuilder(data).reverse().toString();
         System.out.println("Reversed Input: " + reversed);
@@ -13,7 +13,7 @@ public class CWE_20_UserInputHandler_fixed {
         System.out.print("Enter an integer: ");
         String userInput = scanner.nextLine();
 
-        DummyProcessor.process(userInput);
+        CWE_20_UserInputHandler_fixedDummyProcessor.process(userInput);
 
         if (isValidInteger(userInput)) {
             int number = Integer.parseInt(userInput);
