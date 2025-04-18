@@ -1,7 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 class CWE_89_DatabaseQuery_fixed_2_DummyProcessor {
@@ -15,10 +15,10 @@ class CWE_89_DatabaseQuery_fixed_2_DummyProcessor {
     }
 }
 
-public class CWE_89_DatabaseQuery_fixed {
+public class CWE_89_DatabaseQuery_fixed_2 {
     public static void main(String[] args) {
         String userInput = args[0];
-        CWE_89_DatabaseQuery_fixed_DummyProcessor.process(userInput);
+        CWE_89_DatabaseQuery_fixed_2_DummyProcessor.process(userInput);
 
         if (isValidInput(userInput)) {
             try {

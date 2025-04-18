@@ -18,10 +18,16 @@ def load_env_variables():
     return code_files_directory, codeql_binary_path, codeql_repo_path
 
 def create_codeql_database(codeql_binary_path, source_directory, database_directory, language):
-    command = [
-        codeql_binary_path, 'database', 'create', database_directory,
-        '--language=' + 'c-cpp', '--source-root', source_directory, '--overwrite'
-    ]
+    if language in ['c', 'cpp']:
+        command = [
+            codeql_binary_path, 'database', 'create', database_directory,
+            '--language=' + 'c-cpp', '--source-root', source_directory, '--overwrite'
+        ]
+    else:
+        command = [
+            codeql_binary_path, 'database', 'create', database_directory,
+            '--language', language, '--source-root', source_directory, '--overwrite'
+        ]
 
     if language == 'csharp' or language == 'java':
         command.extend(['--build-mode=none'])
@@ -40,36 +46,47 @@ def create_codeql_database(codeql_binary_path, source_directory, database_direct
         print(f"Error creating database for {language}: {e.stderr}")
         sys.exit(1)
 
-def finalize_codeql_database(codeql_binary_path, database_directory, language):
-    command = [codeql_binary_path, 'database', 'finalize', database_directory]
-
-    print(f"Running command: {' '.join(command)}")
-
-    try:
-        subprocess.run(command, check=True, text=True, capture_output=True)
-        print('Database finalized successfully')
-
-    except subprocess.CalledProcessError as e:
-        print(f"Error finalizing database for {language}: {e.stderr}")
-        sys.exit(1)
+# def finalize_codeql_database(codeql_binary_path, database_directory, language):
+#     command = [codeql_binary_path, 'database', 'finalize', database_directory]
+#
+#     print(f"Running command: {' '.join(command)}")
+#
+#     try:
+#         subprocess.run(command, check=True, text=True, capture_output=True)
+#         print('Database finalized successfully')
+#
+#     except subprocess.CalledProcessError as e:
+#         print(f"Error finalizing database for {language}: {e.stderr}")
+#         sys.exit(1)
 
 def run_codeql_suite(codeql_binary_path, codeql_repo_path, database_directory, language, output_file):
 
     if language in ['c', 'cpp']:
-        # suite_path = os.path.join(codeql_repo_path, 'cpp', 'ql', 'src', 'codeql-suites', 'cpp-security-extended.qls')
-        suite_path = os.path.join('/Users/darylzhang/Documents/workspaces/phd/codeql/cpp/ql/src/Likely Bugs', 'RedundantNullCheckSimple.ql')
+        # suite_path = [
+        #     os.path.join(codeql_repo_path, 'cpp', 'ql', 'src', 'codeql-suites', 'cpp-security-and-quality.qls'),
+        #     os.path.join(codeql_repo_path, 'cpp', 'ql', 'src', 'codeql-suites', 'cpp-security-extended.qls')
+        # ]
+        suite_path = os.path.join(codeql_repo_path, 'cpp', 'ql', 'src', 'codeql-suites', 'cpp-security-extended.qls')
+        additional_packs = os.path.join(codeql_repo_path, 'cpp', 'ql', 'src', 'codeql-suites', 'cpp-security-and-quality.qls')
+
+        # suite_path = os.path.join('/Users/darylzhang/Downloads/OneDrive_1_20-11-2024/c/top25/c-top25.qls')
+        # suite_path = os.path.join(codeql_repo_path, 'cpp', 'ql', 'src', 'codeql-suites', 'custom-cpp-security-extended.qls')
+        # suite_path = os.path.join('/Users/darylzhang/Documents/workspaces/phd/codeql/cpp/ql/src/Critical', 'MissingNullTest.ql')
     else:
         suite_path = os.path.join(codeql_repo_path, language, 'ql', 'src', 'codeql-suites', f'{language}-security-extended.qls')
+        additional_packs = os.path.join(codeql_repo_path, language, 'ql', 'src', 'codeql-suites', f'{language}-security-and-quality.qls')
 
+    # command = "{} database analyze {} {} --format=sarif-latest --output={}".format(codeql_binary_path,
+    #     database_directory, " ".join(suite_path), output_file)
     command = [
         codeql_binary_path, 'database', 'analyze', database_directory, suite_path,
-        '--format=sarif-latest', '--output', output_file
-
+        '--format=sarif-latest', '--quiet', '--output', output_file, '--additional-packs', additional_packs
     ]
 
     print(f"Running analyze command: {' '.join(command)}")
 
     try:
+        # subprocess.run(command, shell=True, stdout=subprocess.DEVNULL)
         subprocess.run(command, check=True, text=True, capture_output=True)
         return f'Query suite execution successful for {language}'
     except subprocess.CalledProcessError as e:
@@ -122,7 +139,7 @@ def extract_cwe_id(tags):
     return 'No CWE-ID available'
 
 
-def process_json_file(json_file_path):
+def process_json_file(json_file_path, language):
     # Load SARIF file
     with open(json_file_path, 'r') as file:
         sarif_data = json.load(file)
@@ -177,6 +194,17 @@ def process_json_file(json_file_path):
             'locations': '; '.join(data['locations'])
         })
 
+    csv_file_path = os.path.join(os.path.dirname(json_file_path), f"{language}-codeql-results.csv")
+
+    with open(csv_file_path, mode='w', newline='', encoding='utf-8') as csv_file:
+        fieldnames = ["filename", "CWE", "no of vul", "rule", "message", "locations"]
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        writer.writerows(summarized_data)
+
+    print(f"CSV file saved at: {csv_file_path}")
+
     return summarized_data
 
 def main():
@@ -189,8 +217,8 @@ def main():
     # Supported languages
     supported_languages = {
         'c': 'c'
-        # 'cpp': 'cpp'
-        # 'csharp': 'csharp',
+        # 'cpp': 'cpp',
+        # 'csharp': 'csharp'
         # 'java': 'java'
         # 'python': 'python'
     }
@@ -227,7 +255,7 @@ def main():
                                                       language, output_file)
             print(result_query_execution)
 
-            process_json_file(output_file)
+            process_json_file(output_file, language)
 
 if __name__ == "__main__":
     main()

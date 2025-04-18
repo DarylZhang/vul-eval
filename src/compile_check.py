@@ -44,8 +44,8 @@ def compile_code(file_path, language):
         #         subprocess.run(['javac', '-cp', java_classpath, file_path], check=True, text=True, capture_output=True)
         #     else:
         #         subprocess.run(['javac', file_path], check=True, text=True, capture_output=True)
-        else:
-            return 'Not a compilable language'
+        # else:
+        #     return 'Not a compilable language'
         return 'Success'
     except subprocess.CalledProcessError as e:
         return f"Error: {e.stderr}"
@@ -56,10 +56,10 @@ def clean_up_compiled_files(directory, language):
         for file in files:
             if (language == 'c' or language == 'cpp') and file.endswith('.out'):
                 os.remove(os.path.join(subdir, file))
-            elif language == 'csharp' and file.endswith('.exe'):
-                os.remove(os.path.join(subdir, file))
-            elif language == 'java' and file.endswith('.class'):
-                os.remove(os.path.join(subdir, file))
+            # elif language == 'csharp' and file.endswith('.exe'):
+            #     os.remove(os.path.join(subdir, file))
+            # elif language == 'java' and file.endswith('.class'):
+            #     os.remove(os.path.join(subdir, file))
 
 
 def generate_html_report(compilation_results):
@@ -110,9 +110,13 @@ def generate_html_report(compilation_results):
     </html>
     """)
 
+    output_dir = "reports"
+    os.makedirs(output_dir, exist_ok=True)
+
     html_content = template.render(language_tables=language_tables)
 
-    with open("reports/compilation_report.html", "w", encoding="utf-8") as f:
+    output_file = os.path.join(output_dir, "compilation_report.html")
+    with open(output_file, "w", encoding="utf-8") as f:
         f.write(html_content)
 
 
